@@ -4,20 +4,35 @@ import {
   ContentChildren,
   QueryList,
   AfterContentInit,
-  OnDestroy
-} from "@angular/core";
-import { FezErrorComponent } from "../error/error.component";
-import { Subscription } from "rxjs";
+  OnDestroy,
+  Input
+} from '@angular/core';
+import { FezErrorComponent } from '../error/error.component';
+import { Subscription } from 'rxjs';
 
 @Component({
-  selector: "fez-errors",
-  templateUrl: "./errors.component.html",
-  styleUrls: ["./errors.component.css"]
+  selector: 'fez-errors',
+  templateUrl: './errors.component.html',
+  styleUrls: ['./errors.component.css']
 })
 export class FezErrorsComponent implements OnInit, AfterContentInit, OnDestroy {
   @ContentChildren(FezErrorComponent)
   private _errors: QueryList<FezErrorComponent>;
   private _errorSubscriptions: Subscription[] = [];
+  private _isActive = false;
+
+  get isActive(): boolean {
+    return this._isActive;
+  }
+
+  @Input('active')
+  set isActive(val: boolean) {
+    if (!val) {
+      this._isActive = false;
+    } else {
+      this._isActive = true;
+    }
+  }
 
   constructor() {}
 
@@ -25,7 +40,6 @@ export class FezErrorsComponent implements OnInit, AfterContentInit, OnDestroy {
 
   ngAfterContentInit(): void {
     this._errors.forEach((errorComponent, index) => {
-      errorComponent.isActive = false;
       this._errorSubscriptions.push(
         errorComponent.activeObservable.subscribe(errorComponent => {
           this.forceOneErrorToShow();

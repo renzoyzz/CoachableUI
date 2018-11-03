@@ -1,9 +1,9 @@
-import { Routes } from "@angular/router";
-import { FezComponent } from "./fez/fez.component";
+import { Routes } from '@angular/router';
+import { FezComponent } from './fez/fez.component';
 
 export const appRoutes: Routes = [
   {
-    path: "",
+    path: '',
     component: FezComponent
   }
 ];

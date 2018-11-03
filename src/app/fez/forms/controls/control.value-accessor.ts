@@ -1,5 +1,5 @@
-import { NG_VALUE_ACCESSOR } from "@angular/forms";
-import { forwardRef, ForwardRefFn } from "@angular/core";
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { forwardRef, ForwardRefFn } from '@angular/core';
 
 export class ControlValueAccessorHelper {
   static create(component: any) {

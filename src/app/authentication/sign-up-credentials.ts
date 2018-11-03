@@ -1,10 +1,10 @@
-import { Credentials } from "./credentials";
+import { Credentials } from './credentials';
 
 export class SignUpCredentials extends Credentials {
   constructor(
-    public confirmEmail = "",
-    public confirmPassword = "",
-    public username = ""
+    public confirmEmail = '',
+    public confirmPassword = '',
+    public username = ''
   ) {
     super();
   }

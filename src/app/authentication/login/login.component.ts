@@ -1,17 +1,17 @@
-import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
-import { SignUpCredentials } from "../sign-up-credentials";
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { SignUpCredentials } from '../sign-up-credentials';
 
 @Component({
-  selector: "login",
-  templateUrl: "./login.component.html",
-  styleUrls: ["./login.component.scss"]
+  selector: 'login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
   public suCreds: SignUpCredentials = new SignUpCredentials();
   public selectedTabIndex: number = Tab.Login;
   public isSubmitPending: boolean = false;
-  public fezInput: string = "hi";
+  public fezInput: string = 'hi';
 
   public get isLogin(): boolean {
     return this.selectedTabIndex == Tab.Login;
@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
 
   //private authService: AuthService
   constructor(private router: Router) {
-    console.log("here");
+    console.log('here');
   }
 
   ngOnInit(): void {
@@ -39,25 +39,25 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin(): void {
-    this.router.navigateByUrl("/dashboard");
+    this.router.navigateByUrl('/dashboard');
     // this.authService.signIn(this.suCreds.toCredentials()).subscribe(res => {
     //   this.isSubmitPending = false;
-    //   this.router.navigateByUrl("/dashboard");
+    //   this.router.navigateByUrl('/dashboard');
     // });
   }
 
   onRegister(): void {
-    this.router.navigateByUrl("/dashboard");
+    this.router.navigateByUrl('/dashboard');
     // this.authService.signUp(this.suCreds.toCredentials()).subscribe(res => {
     //   this.isSubmitPending = false;
-    //   this.router.navigateByUrl("/dashboard");
+    //   this.router.navigateByUrl('/dashboard');
     // });
   }
 }
 
 enum Route {
-  Login = "/login",
-  Register = "/register"
+  Login = '/login',
+  Register = '/register'
 }
 
 enum Tab {

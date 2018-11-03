@@ -1,21 +1,21 @@
-import { Component, OnInit, HostBinding, Input } from "@angular/core";
-import { Observer, Observable } from "rxjs";
-import { share } from "rxjs/operators";
+import { Component, OnInit, HostBinding, Input } from '@angular/core';
+import { Observer, Observable } from 'rxjs';
+import { share } from 'rxjs/operators';
 
 @Component({
-  selector: "fez-error",
-  templateUrl: "./error.component.html",
-  styleUrls: ["./error.component.scss"]
+  selector: 'fez-error',
+  templateUrl: './error.component.html',
+  styleUrls: ['./error.component.scss']
 })
 export class FezErrorComponent implements OnInit {
-  @HostBinding("class.showing")
+  @HostBinding('class.showing')
   private _isShowing: boolean;
   private _isActive: boolean = false;
   get isActive(): boolean {
     return this._isActive;
   }
 
-  @Input("active")
+  @Input('active')
   set isActive(val: boolean) {
     if (!val) this._isActive = false;
     else this._isActive = true;

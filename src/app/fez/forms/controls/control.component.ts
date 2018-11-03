@@ -1,5 +1,5 @@
-import { Input } from "@angular/core";
-import { ControlValueAccessor } from "@angular/forms";
+import { Input } from '@angular/core';
+import { ControlValueAccessor } from '@angular/forms';
 
 export class FezFormControlComponent<T> implements ControlValueAccessor {
   private _val: T;

@@ -1,6 +1,6 @@
-import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { FezErrorComponent } from "./error.component";
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FezErrorComponent } from './error.component';
 
 @NgModule({
   declarations: [FezErrorComponent],
