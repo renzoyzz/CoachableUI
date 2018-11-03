@@ -1,4 +1,4 @@
-<button [disabled]='disabled || loading' [ngClass]='{'loading': loading}'>
-  <ng-content *ngIf='!loading'></ng-content>
-  <img *ngIf='loading' src='https://mir-s3-cdn-cf.behance.net/project_modules/disp/04de2e31234507.564a1d23645bf.gif'>
+<button [disabled]="disabled || loading" [ngClass]="{'loading': loading}">
+  <ng-content *ngIf="!loading"></ng-content>
+  <img *ngIf="loading" src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/04de2e31234507.564a1d23645bf.gif">
 </button>
