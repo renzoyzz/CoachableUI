@@ -5,10 +5,12 @@ import {
   QueryList,
   AfterContentInit,
   OnDestroy,
-  Input
+  Input,
+  HostBinding
 } from '@angular/core';
 import { FezErrorComponent } from '../error/error.component';
 import { Subscription } from 'rxjs';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'fez-errors',
@@ -16,22 +18,21 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./errors.component.css']
 })
 export class FezErrorsComponent implements OnInit, AfterContentInit, OnDestroy {
+  @HostBinding('class.showing')
+  public get isShowing(): boolean {
+    return (
+      this._control.invalid && (this._control.dirty || this._control.touched)
+    );
+  }
+
   @ContentChildren(FezErrorComponent)
   private _errors: QueryList<FezErrorComponent>;
   private _errorSubscriptions: Subscription[] = [];
-  private _isActive = false;
+  private _control: FormControl;
 
-  get isActive(): boolean {
-    return this._isActive;
-  }
-
-  @Input('active')
-  set isActive(val: boolean) {
-    if (!val) {
-      this._isActive = false;
-    } else {
-      this._isActive = true;
-    }
+  @Input('control')
+  set isActive(control: FormControl) {
+    this._control = control;
   }
 
   constructor() {}
@@ -41,7 +42,7 @@ export class FezErrorsComponent implements OnInit, AfterContentInit, OnDestroy {
   ngAfterContentInit(): void {
     this._errors.forEach((errorComponent, index) => {
       this._errorSubscriptions.push(
-        errorComponent.activeObservable.subscribe(errorComponent => {
+        errorComponent.activeObservable.subscribe(() => {
           this.forceOneErrorToShow();
         })
       );

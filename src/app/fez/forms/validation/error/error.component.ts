@@ -10,21 +10,24 @@ import { share } from 'rxjs/operators';
 export class FezErrorComponent implements OnInit {
   @HostBinding('class.showing')
   private _isShowing: boolean;
-  private _isActive: boolean = false;
+  private _isActive = false;
   get isActive(): boolean {
     return this._isActive;
   }
 
   @Input('active')
   set isActive(val: boolean) {
-    if (!val) this._isActive = false;
-    else this._isActive = true;
+    if (!val) {
+      this._isActive = false;
+    } else {
+      this._isActive = true;
+    }
     if (this._activeObserver) {
       this._activeObserver.next(this);
     }
   }
 
-  private _activeOverride: boolean = false;
+  private _activeOverride = false;
   set activeOverride(val: boolean) {
     this._activeOverride = val;
   }

@@ -3,7 +3,7 @@
   <form ngForm='fezForm'>
     <fez-input #firstName='ngModel' name='firstName' id='firstName' placeholder='First Name' [(ngModel)]='model.firstName'
       required minlength='5' maxlength='7'>
-      <fez-errors>
+      <fez-errors [control]="firstName">
         <fez-error [active]='firstName.errors?.required'>
           Please enter your first name!
         </fez-error>
