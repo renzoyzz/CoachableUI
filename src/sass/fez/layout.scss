@@ -1,0 +1,6 @@
+@import "./elevation.scss";
+
+.fez-card {
+  padding: 25px;
+  @include mat-elevation(8);
+}

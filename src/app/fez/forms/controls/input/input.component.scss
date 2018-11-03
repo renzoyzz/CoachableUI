@@ -1,0 +1,26 @@
+@import "../../../../../sass/fez/variables.scss";
+
+:host {
+  display: block;
+  padding-bottom: 16px;
+  position: relative;
+}
+
+label {
+  display: block;
+  width: 100%;
+}
+
+input {
+  width: 100%;
+  border: 0;
+  border: 0px solid $primary-color;
+  outline: 0;
+  font-size: 16px;
+  padding: 0.6rem 1rem;
+  background: #f5f5f5;
+}
+
+.error {
+  color: $warning-color;
+}

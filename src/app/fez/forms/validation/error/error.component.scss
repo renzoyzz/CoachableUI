@@ -1,0 +1,12 @@
+@import "../../../../../sass/fez/variables.scss";
+
+:host {
+  display: none;
+  color: $warning-color;
+  position: absolute;
+  font-size: 0.8rem;
+}
+
+:host.showing {
+  display: block;
+}

@@ -1,0 +1,92 @@
+:host {
+  margin: 0 auto;
+  height: 100%;
+}
+
+.background {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(270deg, #ffb600, #ff9800);
+  background-size: 400% 400%;
+  transition: 0.25s ease-in;
+}
+
+.background.valid {
+  background-position: 100% 50%;
+}
+
+.background.loading {
+  -webkit-animation: pulsingColor 2s ease infinite;
+  -moz-animation: pulsingColor 2s ease infinite;
+  animation: pulsingColor 2s ease infinite;
+}
+
+@-webkit-keyframes pulsingColor {
+  0% {
+    background-position: 100% 50%;
+  }
+  50% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+@-moz-keyframes pulsingColor {
+  0% {
+    background-position: 100% 50%;
+  }
+  50% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+@keyframes pulsingColor {
+  0% {
+    background-position: 100% 50%;
+  }
+  50% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+.card-container {
+  display: block;
+  margin: auto;
+  max-width: 450px;
+}
+
+mat-card {
+  display: block;
+  padding: 24px 50px;
+  transition: 0.25s ease-in-out;
+  margin: 20px 10px;
+  font-family: "Quantico", cursive;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 0;
+  border-bottom: 1px solid black;
+}
+
+p {
+  margin-top: 0;
+}
+
+mat-tab-group {
+  margin-bottom: 15px;
+}
+
+.submit-container button {
+  margin-top: 15px;
+}

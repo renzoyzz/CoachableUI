@@ -1,0 +1,31 @@
+<div class="fez-card">
+  {{model | json}}
+  <form ngForm="fezForm">
+    <fez-input #firstName="ngModel" name="firstName" id="firstName" placeholder="First Name" [(ngModel)]="model.firstName"
+      required>
+      <fez-errors>
+        <fez-error [active]="firstName.errors?.required">
+          Please enter your first name!
+        </fez-error>
+      </fez-errors>
+    </fez-input>
+    <fez-input #phone="ngModel" name="phone" id="phone" placeholder="Phone" [(ngModel)]="model.phone" required phone="US">
+      <fez-errors>
+        <fez-error [active]="phone.errors?.required">
+          Please enter your phone number!
+        </fez-error>
+        <fez-error [active]="phone.errors?.phone">
+          Phone number is invalid!
+        </fez-error>
+      </fez-errors>
+    </fez-input>
+    <fez-input name="fezInput" id="fezInput" [(ngModel)]="fezInput1" required>
+    </fez-input>
+    <fez-input name="fezInput" id="fezInput" [(ngModel)]="fezInput1" required>
+    </fez-input>
+    <fez-input name="fezInput" id="fezInput" [(ngModel)]="fezInput1" required>
+    </fez-input>
+    <fez-input name="fezInput" id="fezInput" [(ngModel)]="fezInput1" required>
+    </fez-input>
+  </form>
+</div>

@@ -1,0 +1,50 @@
+<div [ngClass]="{'valid': loginForm.valid, 'loading': isSubmitPending}" class="background">
+</div>
+<div class="card-container">
+  <mat-card class="mat-elevation-z8">
+    <h1>Coachable</h1>
+    <p class="center-align">Get Coached!</p>
+    <mat-tab-group class="split" [(selectedIndex)]="selectedTabIndex">
+      <mat-tab label="Login">
+      </mat-tab>
+      <mat-tab label="Sign Up">
+      </mat-tab>
+    </mat-tab-group>
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+      {{loginForm.value | json}} {{loginForm.errors | json}}
+
+      <fez-input placeholder="fez input" name="fezInput" id="fezInput" [(ngModel)]="fezInput" required>
+      </fez-input>
+
+      <mat-form-field class="block no-padding">
+        <input matInput placeholder="Email" type="email" id="email" name="email" #email="ngModel" required email [(ngModel)]="suCreds.email">
+        <mat-error *ngIf="email.invalid">Please enter valid email</mat-error>
+      </mat-form-field>
+      <div [ngIfForm]="isSignUp">
+        <mat-form-field *ngIf="isSignUp" class="block no-padding">
+          <input matInput placeholder="Confirm Email" type="confirmEmail" id="confirmEmail" name="confirmEmail" #emailConf="ngModel"
+            [equal]="suCreds.email" required [(ngModel)]="suCreds.confirmEmail">
+          <mat-error *ngIf="emailConf.invalid">Please enter a matching email</mat-error>
+        </mat-form-field>
+      </div>
+      <mat-form-field class="block no-padding">
+        <input matInput placeholder="Password" type="password" id="password" name="password" #password="ngModel" required minlength="6"
+          maxlength="20" [(ngModel)]="suCreds.password">
+        <mat-error *ngIf="password.invalid || password.invalid">Must be between 4 and 20 characters</mat-error>
+      </mat-form-field>
+      <div [ngIfForm]="isSignUp">
+        <mat-form-field *ngIf="isSignUp" class="block no-padding">
+          <input matInput placeholder="Confirm Password" type="password" id="confirmPassword" name="confirmPassword" #confPass="ngModel"
+            [equal]="suCreds.password" required [(ngModel)]="suCreds.confirmPassword">
+          <mat-error *ngIf="confPass.invalid">Please enter a matching password</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="submit-container center-align">
+        <fez-button [loading]="isSubmitPending" [disabled]="loginForm.invalid" class="full">
+          <span *ngIf="isLogin">Login</span>
+          <span *ngIf="isSignUp">Sign Up</span>
+        </fez-button>
+      </div>
+    </form>
+  </mat-card>
+</div>
