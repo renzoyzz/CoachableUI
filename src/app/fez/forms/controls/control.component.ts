@@ -4,9 +4,9 @@ import { ControlValueAccessor } from '@angular/forms';
 export class FezFormControlComponent<T> implements ControlValueAccessor {
   private _val: T;
   private _onChange: Function;
-  private _onTouched: Function;
-  private _isDisabled: boolean;
-  private _isInitialized: boolean = false;
+  protected onTouched: Function;
+  protected _isDisabled: boolean;
+  private _isInitialized = false;
   @Input()
   public placeholder: string;
   @Input()
@@ -23,7 +23,7 @@ export class FezFormControlComponent<T> implements ControlValueAccessor {
   public set val(val: T) {
     this._val = val;
     this._onChange(this._val);
-    this._onTouched();
+    this.onTouched();
   }
 
   public get isDisabled(): boolean {
@@ -35,13 +35,15 @@ export class FezFormControlComponent<T> implements ControlValueAccessor {
       this._isInitialized = true;
       return;
     }
-    if (val) this._val = val;
+    if (val) {
+      this._val = val;
+    }
   }
   public registerOnChange(fn: any): void {
     this._onChange = fn;
   }
   public registerOnTouched(fn: any): void {
-    this._onTouched = fn;
+    this.onTouched = fn;
   }
   public setDisabledState?(isDisabled: boolean): void {
     this._isDisabled = isDisabled;

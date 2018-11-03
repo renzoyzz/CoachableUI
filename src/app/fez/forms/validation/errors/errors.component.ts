@@ -20,12 +20,18 @@ import { FormControl } from '@angular/forms';
 export class FezErrorsComponent implements OnInit, AfterContentInit, OnDestroy {
   @HostBinding('class.showing')
   public get isShowing(): boolean {
+    let result: boolean;
     if (!this._control) {
-      return false;
+      result = true;
+    } else {
+      result = !(
+        this._control.invalid &&
+        (this._control.dirty || this._control.touched)
+      );
     }
-    return (
-      this._control.invalid && (this._control.dirty || this._control.touched)
-    );
+
+    console.log(`isShowing: ${result}`);
+    return result;
   }
 
   @ContentChildren(FezErrorComponent)

@@ -1,3 +1,7 @@
-:host.active {
+:host.showing {
+  display: none;
+}
+
+:host {
   display: block;
 }

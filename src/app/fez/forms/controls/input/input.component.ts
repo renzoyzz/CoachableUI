@@ -8,6 +8,4 @@ import { ControlValueAccessorHelper } from '../control.value-accessor';
   styleUrls: ['./input.component.scss'],
   providers: [ControlValueAccessorHelper.create(FezInputComponent)]
 })
-export class FezInputComponent extends FezFormControlComponent<string> {
-  ngOnInit() {}
-}
+export class FezInputComponent extends FezFormControlComponent<string> {}
