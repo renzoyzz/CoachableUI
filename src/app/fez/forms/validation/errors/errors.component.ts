@@ -15,7 +15,7 @@ import { FormControl } from '@angular/forms';
 @Component({
   selector: 'fez-errors',
   templateUrl: './errors.component.html',
-  styleUrls: ['./errors.component.css']
+  styleUrls: ['./errors.component.scss']
 })
 export class FezErrorsComponent implements OnInit, AfterContentInit, OnDestroy {
   @HostBinding('class.showing')
