@@ -1,43 +1,43 @@
-<div class='fez-card'>
+<div class="fez-card">
   {{model | json}}
-  <form ngForm='fezForm'>
-    <fez-input #firstName='ngModel' name='firstName' id='firstName' placeholder='First Name' [(ngModel)]='model.firstName'
-      required minlength='5' maxlength='7'>
+  <form ngForm="fezForm">
+    <fez-input #firstName="ngModel" name="firstName" id="firstName" placeholder="First Name" [(ngModel)]="model.firstName"
+      required minlength="5" maxlength="7">
       <fez-errors [control]="firstName">
-        <fez-error [active]='firstName.errors?.required'>
+        <fez-error [active]="firstName.errors?.required">
           Please enter your first name!
         </fez-error>
-        <fez-error [active]='firstName.errors?.minlength'>
+        <fez-error [active]="firstName.errors?.minlength">
           First Name must be more than 5!
         </fez-error>
-        <fez-error [active]='firstName.errors?.maxlength'>
+        <fez-error [active]="firstName.errors?.maxlength">
           First Name must be less than 7!
         </fez-error>
       </fez-errors>
     </fez-input>
-    <fez-input #phone='ngModel' name='phone' id='phone' placeholder='Phone' [(ngModel)]='model.phone' required phone='US'>
+    <fez-input #phone="ngModel" name="phone" id="phone" placeholder="Phone" [(ngModel)]="model.phone" required phone="US">
       <fez-errors>
-        <fez-error [active]='phone.errors?.required'>
+        <fez-error [active]="phone.errors?.required">
           Please enter your phone number!
         </fez-error>
       </fez-errors>
     </fez-input>
-    <fez-input name='fezInput' id='fezInput' [(ngModel)]='fezInput1' required>
+    <fez-input name="fezInput" id="fezInput" [(ngModel)]="fezInput1" required>
     </fez-input>
-    <fez-input name='fezInput' id='fezInput' [(ngModel)]='fezInput1' required>
+    <fez-input name="fezInput" id="fezInput" [(ngModel)]="fezInput1" required>
     </fez-input>
-    <fez-input name='fezInput' id='fezInput' [(ngModel)]='fezInput1' required>
+    <fez-input name="fezInput" id="fezInput" [(ngModel)]="fezInput1" required>
     </fez-input>
-    <fez-input name='fezInput' id='fezInput' [(ngModel)]='fezInput1' required>
+    <fez-input name="fezInput" id="fezInput" [(ngModel)]="fezInput1" required>
     </fez-input>
   </form>
 </div>
 
-<button class='fez-btn'>
+<button class="fez-btn">
 
 </button>
 
-<a class='fez-btn'>
+<a class="fez-btn">
 
 </a>
 
