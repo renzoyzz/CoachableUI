@@ -1,4 +1,4 @@
-@import '../../../../../sass/fez/variables.scss';
+@import "../../../../../sass/fez/variables.scss";
 
 :host {
   display: block;
@@ -21,6 +21,6 @@ input {
   background: #f5f5f5;
 }
 
-.error {
+.errors {
   color: $warning-color;
 }

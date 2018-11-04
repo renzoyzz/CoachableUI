@@ -1,6 +1,7 @@
 import { Component, OnInit, HostBinding, Input } from '@angular/core';
 import { Observer, Observable } from 'rxjs';
 import { share } from 'rxjs/operators';
+import { EventEmitter } from 'protractor';
 
 @Component({
   selector: 'fez-error',

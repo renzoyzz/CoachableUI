@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 import { FezErrorComponent } from '../error/error.component';
 import { Subscription } from 'rxjs';
-import { FormControl } from '@angular/forms';
+import { FezFormControlComponent } from '../../controls/control.component';
 
 @Component({
   selector: 'fez-errors',
@@ -20,28 +20,23 @@ import { FormControl } from '@angular/forms';
 export class FezErrorsComponent implements OnInit, AfterContentInit, OnDestroy {
   @HostBinding('class.showing')
   public get isShowing(): boolean {
-    let result: boolean;
-    if (!this._control) {
-      result = true;
-    } else {
-      result = !(
-        this._control.invalid &&
-        (this._control.dirty || this._control.touched)
-      );
+    if (!this._parentControl) {
+      return false;
     }
-
-    console.log(`isShowing: ${result}`);
-    return result;
+    const formControl = this._parentControl.formControl;
+    if (!formControl) {
+      return false;
+    }
+    return formControl.invalid && (formControl.dirty || formControl.touched);
   }
 
   @ContentChildren(FezErrorComponent)
   private _errors: QueryList<FezErrorComponent>;
   private _errorSubscriptions: Subscription[] = [];
-  private _control: FormControl;
+  private _parentControl: FezFormControlComponent<any>;
 
-  @Input('control')
-  set isActive(control: FormControl) {
-    this._control = control;
+  public set parentControl(control: FezFormControlComponent<any>) {
+    this._parentControl = control;
   }
 
   constructor() {}
@@ -49,19 +44,23 @@ export class FezErrorsComponent implements OnInit, AfterContentInit, OnDestroy {
   ngOnInit() {}
 
   ngAfterContentInit(): void {
-    this._errors.forEach((errorComponent, index) => {
-      this._errorSubscriptions.push(
-        errorComponent.activeObservable.subscribe(() => {
-          this.forceOneErrorToShow();
-        })
-      );
-    });
+    this.registerChangeDetection();
     this.forceOneErrorToShow();
   }
 
   ngOnDestroy() {
     this._errorSubscriptions.forEach(sub => {
       sub.unsubscribe();
+    });
+  }
+
+  private registerChangeDetection(): void {
+    this._errors.forEach((errorComponent, index) => {
+      this._errorSubscriptions.push(
+        errorComponent.activeObservable.subscribe(() => {
+          this.forceOneErrorToShow();
+        })
+      );
     });
   }
 

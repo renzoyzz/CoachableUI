@@ -1,7 +1,21 @@
-import { Input } from '@angular/core';
-import { ControlValueAccessor } from '@angular/forms';
+import {
+  Input,
+  ContentChild,
+  Optional,
+  Host,
+  SkipSelf,
+  OnInit,
+  AfterViewInit
+} from '@angular/core';
+import {
+  ControlValueAccessor,
+  ControlContainer,
+  AbstractControl
+} from '@angular/forms';
+import { FezErrorsComponent } from '../validation/errors/errors.component';
 
-export class FezFormControlComponent<T> implements ControlValueAccessor {
+export class FezFormControlComponent<T>
+  implements ControlValueAccessor, OnInit, AfterViewInit {
   private _val: T;
   private _onChange: Function;
   protected onTouched: Function;
@@ -15,6 +29,28 @@ export class FezFormControlComponent<T> implements ControlValueAccessor {
   public name: string;
   @Input()
   public errors: string[];
+
+  @ContentChild(FezErrorsComponent)
+  errorsComponent: FezErrorsComponent;
+
+  constructor(
+    @Optional()
+    @Host()
+    @SkipSelf()
+    private controlContainer: ControlContainer
+  ) {}
+
+  ngOnInit(): void {}
+
+  ngAfterViewInit(): void {
+    if (this.errorsComponent) {
+      this.errorsComponent.parentControl = this;
+    }
+  }
+
+  public get formControl(): AbstractControl {
+    return this.controlContainer.control.get(this.name);
+  }
 
   public get val(): T {
     return this._val;
